@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ChartComponent from "./charts";
-import Modal from './modal';
+import Modal from "./modal";
 
 const page = () => {
   const [timeRange, setTimeRange] = useState(7);
@@ -15,19 +15,21 @@ const page = () => {
   };
 
   const clickhandle = () => {
-    console.log('open')
-  }
+    console.log("open");
+  };
   return (
     <>
-      <div className="w-[50%] flex justify-between gap-3 m-5 mr-5">
+      <div className="w-[100%] flex justify-between gap-3 m-5 place-content-center">
         <div
           className="bg-white shadow-lg rounded-lg overflow-hidden flex-grow"
-          style={{ width: "48%" }}
+          style={{ width: "150px" }}
         >
           <div className="px-6 mt-4">
             <div className="flex justify-between">
               <h1 className="font-semibold text-[16px] mb-1">Recent Sales</h1>
-              <button className="bg-red-500" onClick={openModal}>open</button>
+              <button className="bg-red-500" onClick={openModal}>
+                open
+              </button>
             </div>
             <p className="text-[20px] text-[#757676]">Last 7 days</p>
             <h1 className="text-bold text-[20px] font-bold mt-1">PKR 0</h1>
@@ -55,7 +57,7 @@ const page = () => {
 
         <div
           className="bg-white shadow-lg rounded-lg overflow-hidden flex-grow"
-          style={{ width: "48%" }}
+          style={{ width: "150px" }}
         >
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">Recent Sales</div>
@@ -68,8 +70,6 @@ const page = () => {
         <p>This is a custom modal without any library.</p>
       </Modal>
     </>
-
-
   );
 };
 
