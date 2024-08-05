@@ -141,14 +141,14 @@ export default function sidebar({ setProfileDrawer }) {
         </ul>
 
         <ul className="p-0 text-sm ">
-          <Link className="hover-container" href={`/client/dashboard`}>
+          <Link className="hover-container" href={`/client/onlineBooking`}>
             <li
               className={`flex items-center rounded-md  mb-3 ${
                 activeTab === "account"
                   ? "setting_active_tab"
                   : "setting_inactive"
               }`}
-              onClick={() => handleTabClick("dashboard")}
+              onClick={() => handleTabClick("onlineBooking")}
             >
               <div></div>
               <Image
