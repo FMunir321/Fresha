@@ -9,7 +9,7 @@ const BasicLayout = ({children}) => {
   const [profileDrawer, setProfileDrawer] = useState(false);
   return (
     <div>
-      <Layout className=" bg-[#f8f8fb] mt-5 rounded-xl">
+      <Layout>
         <Sider theme="light" className="rounded-xl" style={{width:'none'}}>
           <Sidebar setProfileDrawer={setProfileDrawer} />
         </Sider>
