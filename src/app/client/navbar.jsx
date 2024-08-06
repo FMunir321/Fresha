@@ -1,6 +1,9 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import NotificationModal from "./notificationModal/NotificationModal";
+import "./Navbar.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import profile_setting from "../../../public/team.svg";
 import profile_setting_vector from "../../../public/settings.svg";
@@ -14,6 +17,7 @@ import Image from "next/image";
 export default function navbar() {
   const [profileImage, setProfileImage] = useState(null);
   const [isNotificationModal, setIsNotificationModal] = useState(false);
+  const [percentage, setPercentage] = useState(80);
 
   const handleImage = (event) => {
     const file = event.target.files[0];
@@ -41,6 +45,22 @@ export default function navbar() {
           </Link>
         </div>
         <div className="flex">
+          <div className="mr-3 w-[40px] h-[40px] bg-[#4f5ef2]">
+            <CircularProgressbar
+              className=""
+              styles={buildStyles({
+                textSize: "24px",
+                pathColor: `rgba(255, 255, 255, ${percentage / 100})`,
+                textColor: "#fff",
+                trailColor: "#4f5ef2",
+                backgroundColor: "#4f5ef2",
+              })}
+              value={percentage}
+              text={`${percentage}%`}
+            />
+            ;
+          </div>
+
           <div className="mt-2 mr-3">
             <button className="">
               <FiSearch className="w-[25px] h-[25px] mr-1" />
@@ -56,10 +76,14 @@ export default function navbar() {
               <IoNotificationsOutline className="w-[25px] h-[25px]" />
             </button>
           </div>
-          {isNotificationModal ? <NotificationModal
-            isOpen={isNotificationModal}
-            onClose={handleCloseNotificationModal}
-          /> :<></>}
+          {isNotificationModal ? (
+            <NotificationModal
+              isOpen={isNotificationModal}
+              onClose={handleCloseNotificationModal}
+            />
+          ) : (
+            <></>
+          )}
 
           <div className="mr-3 flex justify-center lg:justify-start items-center z-0">
             <input
