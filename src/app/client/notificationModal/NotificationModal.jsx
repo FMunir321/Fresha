@@ -13,6 +13,12 @@ import Actions from "./Pages/Actions";
 export default function NotificationModal({ isOpen, onClose }) {
   const [isTap, setIsTap] = useState("1");
 
+  const handleOverlayClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   const renderContent = () => {
     switch (isTap) {
       case "1":
@@ -31,7 +37,10 @@ export default function NotificationModal({ isOpen, onClose }) {
   };
 
   return (
-    <div>
+    <div
+      className="fixed inset-0 z-10 justify-end"
+      onClick={handleOverlayClick}
+    >
       <div className="h-[100vh] w-[400px] absolute top-0 right-0  z-10">
         <div className="flex bg-white">
           <div className="w-[110px] p-2">
