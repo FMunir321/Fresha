@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import NotificationModal from "./notificationModal/NotificationModal";
 
 import profile_setting from "../../../public/team.svg";
 import profile_setting_vector from "../../../public/settings.svg";
@@ -12,16 +13,30 @@ import Image from "next/image";
 
 export default function navbar() {
   const [profileImage, setProfileImage] = useState(null);
+  const [isNotificationModal, setIsNotificationModal] = useState(false);
 
   const handleImage = (event) => {
     const file = event.target.files[0];
     setProfileImage(file);
   };
+  const handleOpenNotificationModal = () => {
+    console.log("isopen");
+    setIsNotificationModal(true);
+  };
+
+  const handleCloseNotificationModal = () => {
+    console.log("isclose");
+    setIsNotificationModal(false);
+  };
   return (
     <div className="w-[100%] border-y border-[#d5d7da] bg-white">
       <div className="flex justify-between items-center">
         <div className="p-3">
-          <Link href={""} className="font-bold text-3xl" style={{fontFamily:'cursive'}}>
+          <Link
+            href={""}
+            className="font-bold text-3xl"
+            style={{ fontFamily: "cursive" }}
+          >
             fresha
           </Link>
         </div>
@@ -37,12 +52,16 @@ export default function navbar() {
             </button>
           </div>
           <div className="mt-2 mr-3">
-            <button className="">
+            <button onClick={handleOpenNotificationModal}>
               <IoNotificationsOutline className="w-[25px] h-[25px]" />
             </button>
           </div>
+          {isNotificationModal ? <NotificationModal
+            isOpen={isNotificationModal}
+            onClose={handleCloseNotificationModal}
+          /> :<></>}
 
-          <div className="mr-3 flex justify-center lg:justify-start items-center ">
+          <div className="mr-3 flex justify-center lg:justify-start items-center z-0">
             <input
               style={{ display: "none" }}
               type="file"
