@@ -18,7 +18,7 @@ export default function Sidebar({ setProfileDrawer }) {
     
   };
   return (
-    <div className="p-3 w-[140px] border-r-2 bg-white h-[100vh]">
+    <div className="p-3 w-[208px] border-r-2 bg-white h-[100vh]">
       <div>
         <h1>Team</h1>
       </div>
