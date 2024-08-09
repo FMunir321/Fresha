@@ -9,7 +9,7 @@ import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
 // Define columns with sorting and action
 const columns = [
   {
-    title: 'Name',
+    title: 'Client name',
     dataIndex: 'name',
     render: (text, record) => (
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -22,18 +22,24 @@ const columns = [
       </div>
     ),
     sorter: (a, b) => a.name.localeCompare(b.name),
+    sorter: (a, b) => a.rating - b.rating,
   },
   {
-    title: 'Contact',
+    title: 'Mobile number',
     dataIndex: 'contact',
   },
   {
-    title: 'Rating',
+    title: 'Review',
     dataIndex: 'rating',
     sorter: (a, b) => a.rating - b.rating,
   },
   {
-    title: 'Action',
+    title: 'Sales',
+    dataIndex: 'sales',
+    sorter: (a, b) => a.rating - b.rating,
+  },
+  {
+    title: 'Created at',
     dataIndex: 'action',
     render: (_, record) => (
       <Dropdown
@@ -137,7 +143,11 @@ const page = () => {
             </Link>
           </p>
         </Col>
-        <Col>2st colum</Col>
+        <Col>
+          <Link href="/client/clients/add" className="text-white bg-black text-lg p-2 w-[70px] rounded-md">
+            Add
+          </Link>
+        </Col>
       </Row>
       <Table
         rowSelection={rowSelection}
