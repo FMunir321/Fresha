@@ -86,15 +86,22 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <div className="border p-3 w-[30%] space-y-4">
-        <p className="!text-4xl !font-bold"> Belleza Aesthetic Clinic Hayatabad</p>
+      <div className="border w-[30%] !border-slate-300">
+        <div className="p-3 space-y-4">
+          <p className="!text-4xl !font-bold">
+            {" "}
+            Belleza Aesthetic Clinic Hayatabad
+          </p>
+          <p className="!text-[20px] !text-[#757676]">No reviews yet</p>
+          <Link
+            href="/client/clients/add"
+            className="text-white bg-black text-lg p-2 rounded-md w-full block text-center "
+          >
+            Book now
+          </Link>
+        </div>
+        <div className="border-b-1 !border-slate-300"></div>
         <p className="!text-[20px] !text-[#757676]">No reviews yet</p>
-        <Link
-          href="/client/clients/add"
-          className="text-white bg-black text-lg p-2 rounded-md w-full block text-center border-b-4 border-black"
-        >
-          Book now
-        </Link>
       </div>
     </div>
   );
