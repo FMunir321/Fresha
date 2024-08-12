@@ -47,6 +47,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between bg-white p-5">
       <div className="relative w-[60%]">
+        <p className="!text-2xl !font-bold">Services</p>
         <div className="flex justify-between items-center">
           {/* Navbar Menu */}
           <div className="overflow-hidden w-full">
@@ -85,6 +86,12 @@ const Navbar = () => {
             disabled={currentIndex === 0}
           />
         </div>
+        <div>
+          <p>Consultaion Fee</p>
+          <p>1 hr</p>
+          <p>Rs 1,000</p>
+        </div>
+        
       </div>
       <div className="border w-[30%] !border-slate-300">
         <div className="p-3 space-y-4">
