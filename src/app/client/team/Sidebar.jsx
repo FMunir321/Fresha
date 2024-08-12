@@ -2,20 +2,18 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar({ setProfileDrawer }) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState(null);
-  const pathname = usePathname();
 
   useEffect(() => {
-    const pathSegments = pathname.split("/");
-    const lastSegment = pathSegments[pathSegments.length - 1];
-    setActiveTab(lastSegment);
-  }, [pathname]);
+    router.push("/client/team/teammembers");
+  }, []);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName == activeTab ? tabName : tabName);
-    
   };
   return (
     <div className="p-3 w-[208px] border-r-2 bg-white h-[100vh]">

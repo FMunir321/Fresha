@@ -1,20 +1,20 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
-import { Button, Flex, Table, Input, Dropdown, Menu } from 'antd';
-import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Button, Flex, Table, Input, Dropdown, Menu } from "antd";
+import { DownOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { Link } from "@nextui-org/react";
 
 // Define columns with sorting and action
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    title: "Name",
+    dataIndex: "name",
     render: (text, record) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <img
           src={record.picture}
           alt={text}
-          style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 8 }}
+          style={{ width: 40, height: 40, borderRadius: "50%", marginRight: 8 }}
         />
         {text}
       </div>
@@ -22,17 +22,17 @@ const columns = [
     sorter: (a, b) => a.name.localeCompare(b.name),
   },
   {
-    title: 'Contact',
-    dataIndex: 'contact',
+    title: "Contact",
+    dataIndex: "contact",
   },
   {
-    title: 'Rating',
-    dataIndex: 'rating',
+    title: "Rating",
+    dataIndex: "rating",
     sorter: (a, b) => a.rating - b.rating,
   },
   {
-    title: 'Action',
-    dataIndex: 'action',
+    title: "Action",
+    dataIndex: "action",
     render: (_, record) => (
       <Dropdown
         overlay={
@@ -40,10 +40,12 @@ const columns = [
             <Menu.Item key="edit">Edit</Menu.Item>
             <Menu.Item key="off-time">Off Time</Menu.Item>
             <Menu.Item key="view-calendar">View Calendar</Menu.Item>
-            <Menu.Item key="view-schedule-shifts">View Schedule Shifts</Menu.Item>
+            <Menu.Item key="view-schedule-shifts">
+              View Schedule Shifts
+            </Menu.Item>
           </Menu>
         }
-        trigger={['click']}
+        trigger={["click"]}
       >
         <Button icon={<EllipsisOutlined />} />
       </Dropdown>
@@ -59,15 +61,15 @@ const generateInitialDataSource = () => {
     contact: `Contact ${i}`,
     rating: Math.floor(Math.random() * 5) + 1, // Example rating between 1 and 5
     picture: `https://i.pravatar.cc/40?img=${i}`, // Example placeholder image URL
-    status: i % 2 === 0 ? 'active' : 'inactive', // Example status
+    status: i % 2 === 0 ? "active" : "inactive", // Example status
   }));
 };
 
 export default function Page() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [searchText, setSearchText] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all");
   const [dataSource, setDataSource] = useState([]);
 
   useEffect(() => {
@@ -77,12 +79,14 @@ export default function Page() {
 
   // Memoize filtered data source to avoid unnecessary recalculations
   const filteredDataSource = useMemo(() => {
-    return dataSource
-      .filter(item => {
-        const matchesSearch = item.name.toLowerCase().includes(searchText.toLowerCase());
-        const matchesStatus = filterStatus === 'all' || item.status === filterStatus;
-        return matchesSearch && matchesStatus;
-      });
+    return dataSource.filter((item) => {
+      const matchesSearch = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+      const matchesStatus =
+        filterStatus === "all" || item.status === filterStatus;
+      return matchesSearch && matchesStatus;
+    });
   }, [searchText, filterStatus, dataSource]);
 
   const start = () => {
@@ -95,7 +99,7 @@ export default function Page() {
   };
 
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -126,14 +130,14 @@ export default function Page() {
     <>
       <div className="p-3 mt-3">
         <div className="flex !justify-between !items-center">
-          <div>
-            <p className="!font-bold text-black !text-xl">Team Members</p>
-          </div>
-          <div>
-            <Link href="/client/team/teammembers/add"  className="text-white bg-black text-lg p-2 w-[70px] rounded-md">
-              Add
-            </Link>
-          </div>
+          <p className="!font-bold text-black !text-xl">Team Members</p>
+          <Link
+            // href="/client/team/teammembers/add"
+            href="/client/components/team/add"
+            className="text-white bg-black text-lg p-2 w-[70px] rounded-md"
+          >
+            Add
+          </Link>
         </div>
       </div>
 
@@ -145,17 +149,26 @@ export default function Page() {
             onChange={handleSearchChange}
             style={{ width: 200, marginRight: 16 }}
           />
-          <Dropdown overlay={menu} trigger={['click']}>
+          <Dropdown overlay={menu} trigger={["click"]}>
             <Button>
               Filter by status <DownOutlined />
             </Button>
           </Dropdown>
-          <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
+          <Button
+            type="primary"
+            onClick={start}
+            disabled={!hasSelected}
+            loading={loading}
+          >
             Delete
           </Button>
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : null}
         </Flex>
-        <Table rowSelection={rowSelection} columns={columns} dataSource={filteredDataSource} />
+        <Table
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={filteredDataSource}
+        />
       </Flex>
     </>
   );

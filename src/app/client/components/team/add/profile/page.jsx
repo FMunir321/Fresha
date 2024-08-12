@@ -13,7 +13,7 @@ const formItemLayout = {
 
 const inputStyle = { height: '45px', marginTop: '10px' };
 
-const AddTeamForm = () => {
+const page = () => {
   const [form] = Form.useForm();
   const [profileImage, setProfileImage] = useState('https://i.pravatar.cc/100');
 
@@ -161,4 +161,4 @@ const AddTeamForm = () => {
   );
 };
 
-export default AddTeamForm;
+export default page;

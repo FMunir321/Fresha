@@ -1,13 +1,25 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Form, Input, Modal, Typography, Row, Col, Card } from 'antd';
-import { PlusOutlined, EditOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Modal, Typography, Row, Col, Card } from "antd";
+import { PlusOutlined, EditOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
 const initialContacts = [
-  { id: 1, name: 'John Doe', relationship: 'Brother', email: 'john.doe@example.com', phone: '+1 234 567 8901' },
-  { id: 2, name: 'Jane Smith', relationship: 'Friend', email: 'jane.smith@example.com', phone: '+1 987 654 3210' },
+  {
+    id: 1,
+    name: "John Doe",
+    relationship: "Brother",
+    email: "john.doe@example.com",
+    phone: "+1 234 567 8901",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    relationship: "Friend",
+    email: "jane.smith@example.com",
+    phone: "+1 987 654 3210",
+  },
 ];
 
 const EmergencyContacts = () => {
@@ -31,7 +43,7 @@ const EmergencyContacts = () => {
       setIsModalVisible(false);
       form.resetFields();
     } catch (error) {
-      console.error('Validation Failed:', error);
+      console.error("Validation Failed:", error);
     }
   };
 
@@ -43,13 +55,13 @@ const EmergencyContacts = () => {
           type="primary"
           icon={<PlusOutlined />}
           style={{
-            borderRadius: '20px',
-            backgroundColor: '#52c41a',
-            borderColor: '#52c41a',
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
+            borderRadius: "20px",
+            backgroundColor: "#52c41a",
+            borderColor: "#52c41a",
+            color: "white",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
           }}
           onClick={handleAddContact}
         >
@@ -63,11 +75,17 @@ const EmergencyContacts = () => {
             <Card
               title={contact.name}
               extra={<EditOutlined />}
-              style={{ marginBottom: '16px' }}
+              style={{ marginBottom: "16px" }}
             >
-              <p><strong>Relationship:</strong> {contact.relationship}</p>
-              <p><strong>Email:</strong> {contact.email}</p>
-              <p><strong>Phone:</strong> {contact.phone}</p>
+              <p>
+                <strong>Relationship:</strong> {contact.relationship}
+              </p>
+              <p>
+                <strong>Email:</strong> {contact.email}
+              </p>
+              <p>
+                <strong>Phone:</strong> {contact.phone}
+              </p>
             </Card>
           </Col>
         ))}
@@ -85,37 +103,46 @@ const EmergencyContacts = () => {
           <Form.Item
             name="name"
             label="Full Name"
-            rules={[{ required: true, message: 'Please input the full name!' }]}
+            rules={[{ required: true, message: "Please input the full name!" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="relationship"
             label="Relationship"
-            rules={[{ required: true, message: 'Please input the relationship!' }]}
+            rules={[
+              { required: true, message: "Please input the relationship!" },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="email"
             label="Email"
-            rules={[{ type: 'email', message: 'Please input a valid email!' }, { required: true, message: 'Please input the email!' }]}
+            rules={[
+              { type: "email", message: "Please input a valid email!" },
+              { required: true, message: "Please input the email!" },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="phone"
             label="Phone"
-            rules={[{ required: true, message: 'Please input the phone number!' }]}
+            rules={[
+              { required: true, message: "Please input the phone number!" },
+            ]}
           >
             <Input.Group compact>
               <Form.Item
                 name="countryCode"
                 noStyle
-                rules={[{ required: true, message: 'Please input the country code!' }]}
+                rules={[
+                  { required: true, message: "Please input the country code!" },
+                ]}
               >
                 <Input
-                  style={{ width: '30%' }}
+                  style={{ width: "30%" }}
                   addonBefore="+"
                   placeholder="Country Code"
                 />
@@ -123,12 +150,11 @@ const EmergencyContacts = () => {
               <Form.Item
                 name="phoneNumber"
                 noStyle
-                rules={[{ required: true, message: 'Please input the phone number!' }]}
+                rules={[
+                  { required: true, message: "Please input the phone number!" },
+                ]}
               >
-                <Input
-                  style={{ width: '70%' }}
-                  placeholder="Phone Number"
-                />
+                <Input style={{ width: "70%" }} placeholder="Phone Number" />
               </Form.Item>
             </Input.Group>
           </Form.Item>
