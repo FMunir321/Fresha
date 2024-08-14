@@ -177,10 +177,10 @@ const Navbar = () => {
           Removal/ Whitening Facials/ Whitening Infusions/ Skin Glow Therapy.
         </p>
         <div className="flex justify-between pt-5">
-          <div>
-            <p className="!text-xl !font-semibold w-[350px]">Opening times</p>
+          <div className="w-[50%]">
+            <p className="!text-xl !font-semibold">Opening times</p>
             {data.map((item, index) => (
-              <div className="flex justify-between">
+              <div className="flex justify-between text-sm font-medium">
                 <div>{item.day}</div>
                 <div>
                   {item.starttime} - {item.endtime}
@@ -188,9 +188,25 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          <div>
-            <p className="!text-xl !font-semibold w-[50%]">Additional information</p>
+          <div className="w-[40%]">
+            <p className="!text-xl !font-semibold">Additional information</p>
+            <div>Instant Confirmation</div>
           </div>
+        </div>
+
+        <p className="!text-2xl !font-bold py-5">Venues nearby</p>
+        <img className="w-[45%] pl-2" src="https://images.fresha.com/locations/location-profile-images/495535/1515313/6b6905ad-e838-4052-813d-7f1bfc020650-BellezaBeautyClinicandSalon-PK-KhyberPakhtunkhwa-Peshawar-Bashirabad-Fresha.jpg?class=venue-gallery-large&dpr=2"></img>
+        <div className="border-x border-b w-[45%] pl-2">
+          
+          <p className="!text-md !font-semibold">
+            Belleza Beauty Clinic and Salon
+          </p>
+          <div className="flex text-center pt-1">
+            <p className="text-md !font-semibold">4.6</p>
+            <span className="p-[3px]">(16)</span>
+          </div>
+          <p className="text-md">Bashirabad, Peshawar</p>
+          <button className="text-md pt-1">Beauty Salon</button>
         </div>
       </div>
 
