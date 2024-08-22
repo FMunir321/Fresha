@@ -1,41 +1,36 @@
 import { Button, Dropdown } from "antd";
+import Link from "next/link";
 import React from "react";
 
 const items = [
   {
     key: "1",
     label: (
-      <a
-        target="_blank"
+      <Link
         rel="noopener noreferrer"
         href="/client/components/catalog/services/basicdetails"
       >
-       Single service
-      </a>
+        Single service
+      </Link>
     ),
   },
   {
     key: "2",
     label: (
-      <a
-        target="_blank"
+      <Link
         rel="noopener noreferrer"
-        href="https://www.aliyun.com"
+        href="/client/components/catalog/services/basicdetails"
       >
         2nd menu item
-      </a>
+      </Link>
     ),
   },
   {
     key: "3",
     label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
+      <Link rel="noopener noreferrer" href="https://www.luohanacademy.com">
         3rd menu item
-      </a>
+      </Link>
     ),
   },
 ];
@@ -44,7 +39,7 @@ const page = () => {
     <div className="flex justify-between">
       <div>
         <h1 className="text-[16px] font-semibold">Service menu</h1>
-        <p>View and manage the services offered by your business. </p>
+        <p>View and manage the services offered by your business.</p>
       </div>
       <div>
         <Dropdown menu={{ items }} placement="bottomRight" arrow>
